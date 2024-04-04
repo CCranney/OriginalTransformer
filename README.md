@@ -9,3 +9,4 @@ This is if you want to follow my logic of development, not just be overwhelmed w
 
 1. Layer Normalization (LayerNorm.py)
 2. Sublayers (SublayerUnit.py)
+3. Attention (attention.py)

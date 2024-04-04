@@ -1,3 +1,5 @@
+from torch import nn
+
 class SublayerUnit(nn.Module):
     """
     In a transformer, there are encoder layers and decoder layers. However, each of these layers has sublayers to them.
