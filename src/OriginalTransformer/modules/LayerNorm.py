@@ -4,7 +4,8 @@
 class LayerNorm(nn.Module):
     """
     Taken from annotation blog https://nlp.seas.harvard.edu/annotated-transformer/
-    I found the AI Assembly YouTube video quite helpful in understanding the concept.
+    I found this AI Assembly YouTube video quite helpful in understanding the concept.
+    https://www.youtube.com/watch?v=2V3Uduw1zwQ
     I'm not finding a good description of the a_2 and b_2 variables, but hazarding a guess:
         a_2 is multiplied by the normalization and is originally set to ones (ie, does nothing). I assume it can change
             during backpropogation to have an impact?
