@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OriginalTransformer"
+version = "0.0.1"
+authors = [
+  { name="Caleb Cranney", email="caleb.cranney.github@proton.me" },
+]
+description = "me practicing making the original transformer (from their paper)"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+]
+
+dependencies = [
+    'pytorch>=2.2.2',
+    'torchvision>=0.17.2',
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/CCranney/OriginalTransformer"
+"Bug Tracker" = "https://github.com/CCranney/OriginalTransformer"
