@@ -35,6 +35,17 @@ def attention(query, key, value, mask=None, dropout=None):
         representations.
 
     Overall, though, this function is the "equation" (*) described above.
+
+    Note that in this case the query, key and value parameters represent the inputs (x) multiplied by weight matrices
+        Q, K and V. Each head has their own Q, K and V.
+
+    I should also note that while x is what is multiplied by these matrices in most cases, THIS IS NOT ALWAYS THE CASE.
+        As we'll see in decoders, sometimes you can feed different inputs into the Q, K and V multiplications.
+
+    I HIGHLY recommend you look at https://jalammar.github.io/illustrated-transformer/, even if you feel you already
+        get the gist of it. It is helpful to see abstract representations (boxes and arrows), but when you get into
+        the weeds you also need to see the matrices and numbers being calculated in a straightforward manner. This
+        blog post combines both into a beautiful tapestry.
     """
 
     d_k = query.size(-1)
