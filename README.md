@@ -21,5 +21,6 @@ This is if you want to follow my logic of development, not just be overwhelmed w
 2. Sublayers (SublayerUnit.py)
 3. Attention (attention.py)
 4. MultiHeadAttention (MultiHeadAttention.py)
+5. FeedForwardNetwork (FeedForwardNetwork.py)
 
 
