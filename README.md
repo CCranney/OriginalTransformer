@@ -10,7 +10,7 @@ For the first few commits, there will be shameless copy and pasting. The intenti
 1. Understand the original transformer, piece by piece. I'll be copying and pasting, but diving deeply into the intent of each function/class.
 2. Get the transformer working, most likely through a translation task of some kind.
 3. Practice coding the entire thing from scratch from memory, using the final translation task as a "unit test" of sorts. 
-   4. This will likely be done by coding individual components from scratch first.
+  a. This will likely be done by coding individual components from scratch first.
 4. Once I can rewrite the entire program from memory three times over three days, I will consider my comprehension mastered.
 
 ## Walking through my understanding
@@ -22,5 +22,6 @@ This is if you want to follow my logic of development, not just be overwhelmed w
 3. Attention (attention.py)
 4. MultiHeadAttention (MultiHeadAttention.py)
 5. FeedForwardNetwork (FeedForwardNetwork.py)
+6. Positional Encoding (PositionalEncoding.py)
 
 
