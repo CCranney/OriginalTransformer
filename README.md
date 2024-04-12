@@ -23,5 +23,6 @@ This is if you want to follow my logic of development, not just be overwhelmed w
 4. MultiHeadAttention (MultiHeadAttention.py)
 5. FeedForwardNetwork (FeedForwardNetwork.py)
 6. Positional Encoding (PositionalEncoding.py)
+7. Source Masking/Padding (notes added to attention.py)
 
 

@@ -46,6 +46,36 @@ def attention(query, key, value, mask=None, dropout=None):
         get the gist of it. It is helpful to see abstract representations (boxes and arrows), but when you get into
         the weeds you also need to see the matrices and numbers being calculated in a straightforward manner. This
         blog post combines both into a beautiful tapestry.
+
+    SOURCE MASKING ADDITION
+
+    Padding is added to the end of sentences until all sentences in the batch are of the same length. Think of them
+        as blank words. When performing attention, we want to make sure that these blank words are NOT treated as
+        other words - we want to blank them out, so to speak, and not calculate any attention for them. To explain
+        how we're going to do that, note the "scores" variable below.
+
+    scores is the query matrix times the transposed key matrix divided by the square root of the head dimension. In
+        effect, it is a square matrix that maps out how much each word/token cares about every other word/token in the
+        sentence.
+
+    Imagine, then, an 11x11 matrix as the "attention score" matrix. In this matrix:
+        -rows are the "main" token.
+        -columns indicate how much attention the "main" token pays to the column token.
+
+    The QxK multiplication makes this matrix initially, but we are about to make it as succint as possible - we will
+        apply a softmax so that each row adds up to 1. Basically, we will know on a scale of 0 to 1 how much one
+        specific word/token pays to every other word/token.
+
+    We want to mark padded tokens so that all tokens pay
+        0% attention to them. So, in the attention score before softmax, we will set columns representing padded tokens
+        to -infinity (or negative a really, really large number). When softmax is run, these padded tokens will get
+        a big fat 0 in their respective columns.
+
+    Note that you could, technically, also mask out the rows - but this is a waste of time, because no tokens are
+        paying any attention to them anyways. YOU CANNOT, however, mask out the rows without also masking out the
+        columns. This would basically say "padded tokens should pay attention to all tokens equally, and all
+        non-padding tokens SHOULD TREAT PADDED TOKENS AS MEANINGFUL (give them a non-zero score). Bad idea. Blank
+        spaces don't have special meaning in any language.
     """
 
     d_k = query.size(-1)
