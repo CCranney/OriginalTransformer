@@ -1,6 +1,8 @@
 from torch import nn
+from OriginalTransformer.functions.utils import clones
+from OriginalTransformer.functions.attention import attention
 
-class MultiHeadedAttention(nn.Module):
+class MultiHeadAttention(nn.Module):
     
     """
     The multi-head attention layer.
@@ -108,7 +110,7 @@ class MultiHeadedAttention(nn.Module):
     """
     def __init__(self, h, d_model, dropout=0.1):
         "Take in model size and number of heads."
-        super(MultiHeadedAttention, self).__init__()
+        super(MultiHeadAttention, self).__init__()
         assert d_model % h == 0
         # We assume d_v always equals d_k
         self.d_k = d_model // h

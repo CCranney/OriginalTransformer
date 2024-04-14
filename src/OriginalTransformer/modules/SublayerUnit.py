@@ -1,4 +1,5 @@
 from torch import nn
+from OriginalTransformer.modules.LayerNorm import LayerNorm
 
 class SublayerUnit(nn.Module):
     """

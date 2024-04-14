@@ -25,4 +25,12 @@ This is if you want to follow my logic of development, not just be overwhelmed w
 6. Positional Encoding (PositionalEncoding.py)
 7. Source Masking/Padding (notes added to attention.py)
 
+```
+conda create -n <env name>
+conda activate <env name>
+conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 torchtext==0.16.2 altair spacy -c pytorch
+pip install pandas
+pip install pytorch-lightning
+```
+
 
