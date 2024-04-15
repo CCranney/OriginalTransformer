@@ -10,8 +10,6 @@ from OriginalTransformer.modules import Batch
 from OriginalTransformer.loss import LabelSmoothing
 from torch.nn.functional import pad
 
-
-
 class DataModule(pl.LightningDataModule):
     def __init__(self, batch_size=32):
         super().__init__()
@@ -26,10 +24,10 @@ class DataModule(pl.LightningDataModule):
         pass
 
     def train_dataloader(self):
-        return (Batch(b[0], b[1], self.english_vocab["<blank>"]) for b in DataLoader(self.train_iter, batch_size=self.batch_size, shuffle=True, collate_fn=self.convert_batch_sentences_to_tokens))
+        return DataLoader(self.train_iter, batch_size=self.batch_size, shuffle=True, collate_fn=self.convert_batch_sentences_to_tokens)
 
     def val_dataloader(self):
-        return (Batch(b[0], b[1], self.english_vocab["<blank>"]) for b in DataLoader(self.valid_iter, batch_size=self.batch_size, shuffle=False, collate_fn=self.convert_batch_sentences_to_tokens))
+        return DataLoader(self.valid_iter, batch_size=self.batch_size, shuffle=False, collate_fn=self.convert_batch_sentences_to_tokens)
 
     def load_data(self):
         self.train_iter, self.valid_iter, self.test_iter = datasets.Multi30k(
@@ -121,7 +119,7 @@ class DataModule(pl.LightningDataModule):
 
         src = torch.stack(src_list)
         tgt = torch.stack(tgt_list)
-        return (src, tgt)
+        return Batch(src, tgt, self.english_vocab["<blank>"])
 
 
     def return_label_smoothing_criterion(self):

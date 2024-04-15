@@ -44,7 +44,7 @@ class Transformer(pl.LightningModule):
         )
         lossComputation = SimpleLossCompute(self.generator, self.labelSmoothingCriterion)
         loss, loss_node = lossComputation(out, batch.tgt_y, batch.ntokens)
-        if batch_idx % 10 == 0:
+        if batch_idx % 50 == 0:
             optimizer = self.optimizers()
             print(f'---->{batch_idx}, {optimizer.param_groups[0]["lr"]}, {loss}')
 
@@ -78,9 +78,9 @@ class Transformer(pl.LightningModule):
                 }
             }
 
-    def on_training_epoch_end(self, outputs):
+    def on_train_epoch_start(self):
         epoch_num = self.current_epoch
-        print(f"Epoch {epoch_num} completed.")
+        print(f"Epoch {epoch_num} started.")
 
 
 def rate(step, model_size, factor, warmup):
