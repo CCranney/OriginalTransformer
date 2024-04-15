@@ -4,7 +4,6 @@ class Batch:
     """Object for holding a batch of data with mask during training."""
 
     def __init__(self, src, tgt=None, pad=2):  # 2 = <blank>
-        print(src)
         self.src = src
         self.src_mask = (src != pad).unsqueeze(-2)
         if tgt is not None:
@@ -12,6 +11,9 @@ class Batch:
             self.tgt_y = tgt[:, 1:]
             self.tgt_mask = self.make_std_mask(self.tgt, pad)
             self.ntokens = (self.tgt_y != pad).data.sum()
+
+    def __str__(self):
+        return f'input:\n{self.src}\ninputmask:\n{self.src_mask}\ntarget:\n{self.tgt}'
 
     @staticmethod
     def make_std_mask(tgt, pad):

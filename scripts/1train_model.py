@@ -2,8 +2,15 @@ import torch
 import time
 from OriginalTransformer import DataModule, Transformer
 import pytorch_lightning as pl
+from IPython.utils import io
+import random
+import numpy as np
 
-epochs = 5000
+torch.manual_seed(0)
+np.random.seed(0)
+random.seed(0)
+
+epochs = 100
 
 def run_training_job(random_state):
     torch.manual_seed(random_state)
@@ -17,8 +24,9 @@ def run_training_job(random_state):
     trainer = pl.Trainer(
         logger=False,
         max_epochs=epochs,
-        #enable_progress_bar=False,
+        enable_progress_bar=False,
         default_root_dir='logs',
+        #accumulate_grad_batches=10,
         #callbacks=[EarlyStopping(monitor="val_loss", mode="min", patience=10)]
     )
 
@@ -34,6 +42,7 @@ def run_training_job(random_state):
     with io.capture_output() as captured:
         val_loss = trainer.validate(datamodule=dm)[0]["val_loss"]
     print(f"train time: {train_time}, val loss: {val_loss}")#, num_params: {num_params}")
+
     return val_loss
 
 
