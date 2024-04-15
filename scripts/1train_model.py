@@ -11,7 +11,7 @@ torch.manual_seed(0)
 np.random.seed(0)
 random.seed(0)
 
-epochs = 100
+epochs = 15
 
 def run_training_job(random_state):
 
