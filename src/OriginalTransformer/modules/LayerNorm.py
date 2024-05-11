@@ -1,5 +1,5 @@
 from torch import nn
-
+import torch
 class LayerNorm(nn.Module):
     """
     Taken from annotation blog https://nlp.seas.harvard.edu/annotated-transformer/
